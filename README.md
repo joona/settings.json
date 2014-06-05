@@ -1,7 +1,7 @@
 settings.json
 =============
 
-Super simple, environment aware, JSON settings reader NodeJS
+Super simple, environment aware, JSON settings reader for NodeJS.
 
 
 ## Installation
