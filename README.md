@@ -3,6 +3,7 @@ settings.json
 
 Super simple, environment aware, JSON settings reader for NodeJS.
 
+[![Build Status](https://travis-ci.org/joona/settings.json.svg?branch=master)](https://travis-ci.org/joona/settings.json)
 
 ## Installation
 
@@ -26,7 +27,9 @@ var settings = require('settings.json')(__dirname + '/config/settings.json', 'de
     <environment>     Environment to select from the settings, defaults to "production".
 
 
+### Examples
 
+Check out [tests](https://github.com/joona/settings.json/blob/master/test/lib/settings_test.js).
 
 
 
