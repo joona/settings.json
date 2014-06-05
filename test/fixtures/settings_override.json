@@ -1,0 +1,10 @@
+{
+  "defaults": {
+    "only_defined_in_override_defaults": true,
+    "production_specific": "overrode with defaults in overrides file"
+  },
+
+  "production": {
+    "foo": "baafoo"
+  }
+}

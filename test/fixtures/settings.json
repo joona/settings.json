@@ -1,0 +1,25 @@
+{
+  "defaults": {
+    "env": "default",
+    "foo": "baa",
+    "only_defined_in_default": true,
+    "nested": {
+      "foo": "baa"
+    }
+  },
+
+  "development": {
+    "env": "development",
+    "foo": "foo"
+  },
+
+  "production": {
+    "env": "production",
+    "foo": "foobaa",
+    "production_specific": "first",
+    "only_exists_in_production": true,
+    "nested": {
+      "foo": "foobaa"
+    }
+  }
+}

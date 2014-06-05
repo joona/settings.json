@@ -1,0 +1,24 @@
+{
+  "author": "Joona Kulmala",
+  "name": "settings.json",
+  "description": "Super simple, environment aware, JSON settings handler",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joona/settings.json"
+  },
+  "dependencies": {
+    "extend": "~> 1.2.1"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "chai": "latest"
+  },
+  "engines": {
+    "node": "*"
+  },
+  "main": "./lib/settings",
+  "scripts": {
+    "test": "mocha"
+  }
+}
