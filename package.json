@@ -2,7 +2,7 @@
   "author": "Joona Kulmala",
   "name": "settings.json",
   "description": "Super simple, environment aware, JSON settings handler",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/joona/settings.json"

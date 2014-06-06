@@ -1,26 +1,15 @@
 var settings = require(__dirname + "/../../lib/settings");
 
 describe('settings', function(){
-  describe('for nonexistent file', function(){
-    it('should not throw exception', function(){
-      expect(settings('bogus.json')).not.to.throw;
-    });
-
-    it('should return object', function(){
-      expect(settings('bogus.json')).not.to.be.undefined;
-      expect(settings('bogus.json')).not.to.be.null;
-      expect(settings('bogus.json')).to.be.a('object');
-    });
-
-    it('should return empty object', function(){
-      expect(settings('bogus.json')).to.be.empty;
-    });
-  });
-
   describe('for single file', function(){
-    function env(_env){
-      return settings(__dirname + "/../fixtures/settings.json", _env);
+    function env(_env, filename){
+      filename || (filename = "settings.json");
+      return settings(__dirname + "/../fixtures/" + filename, _env);
     }
+
+    it('should not throw an exception', function(){
+      expect(env()).not.to.throw;
+    });
 
     it('should be object', function(){
       expect(env()).to.be.a('object');
@@ -28,6 +17,18 @@ describe('settings', function(){
 
     it('should not be empty', function(){
       expect(env()).not.to.be.empty;
+    });
+
+    it('should throw an error if file is not found', function(){
+      expect(function(){
+        env("production", "settings_nonexistent.json")
+      }).to.throw(Error);
+    });
+
+    it('should throw an error if file is invalid', function(){
+      expect(function(){
+        env("production", "settings_invalid.json")
+      }).to.throw(SyntaxError);
     });
 
     it('should include values from default environment', function(){
@@ -68,21 +69,40 @@ describe('settings', function(){
       return settings(files, _env);
     }
 
+    it('should not throw an exception', function(){
+      expect(env()).not.to.throw;
+    });
+
     it('should not be empty', function(){
       expect(env()).not.to.be.empty;
     });
 
-    it('should silently discard files that are not found', function(){
+    it('should throw an error if any of the specified files is not found', function(){
       function load() {
         return env(undefined, [
             __dirname + "/../fixtures/settings.json",
-            __dirname + "/../fixtures/nonexistent_settings.json",
+            __dirname + "/../fixtures/settings_nonexistent.json",
             __dirname + "/../fixtures/settings_override.json"
         ]);
       }
 
-      expect(load()).not.to.throw;
-      expect(load()).not.to.empty;
+      expect(function(){
+        load();
+      }).to.throw(Error);
+    });
+
+    it('should throw an error if any of the specified files has syntax errors', function(){
+      function load() {
+        return env(undefined, [
+            __dirname + "/../fixtures/settings.json",
+            __dirname + "/../fixtures/settings_invalid.json",
+            __dirname + "/../fixtures/settings_override.json"
+        ]);
+      }
+
+      expect(function(){
+        load()
+      }).to.throw(SyntaxError);
     });
 
     it('should include defaults from multiple files', function(){
