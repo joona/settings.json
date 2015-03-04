@@ -18,13 +18,20 @@ var settings = require('settings.json')(__dirname + '/config/settings.json', 'de
 
 ## Usage
 
-    require('settings.json')(<input> [, <environment>])
+    require('settings.json')(<input> [, <environment> [, <options>]])
 
     <input>           One or many paths for settings file(s). Files are loaded in specified order
                       and overlapping settings from the previous file will be overridden with the ones
                       from latter one.
                       
     <environment>     Environment to select from the settings, defaults to "production".
+
+    <options>         Object with additional options. Supported options:
+
+                      options.quiet:
+                          
+                          Do not throw if file doesn't exist or it's content is invalid JSON. Defaults to false.
+
 
 
 ### Examples

@@ -2,9 +2,9 @@ var settings = require(__dirname + "/../../lib/settings");
 
 describe('settings', function(){
   describe('for single file', function(){
-    function env(_env, filename){
+    function env(_env, filename, options){
       filename || (filename = "settings.json");
-      return settings(__dirname + "/../fixtures/" + filename, _env);
+      return settings(__dirname + "/../fixtures/" + filename, _env, options);
     }
 
     it('should not throw an exception', function(){
@@ -29,6 +29,14 @@ describe('settings', function(){
       expect(function(){
         env("production", "settings_invalid.json")
       }).to.throw(SyntaxError);
+    });
+
+    it('should not throw if options.quiet is defined', function(){
+      expect(function(){
+        env("production", "settings_invalid.json", {
+          quiet: true
+        })
+      }).not.to.throw();
     });
 
     it('should include values from default environment', function(){
