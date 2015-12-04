@@ -133,5 +133,9 @@ describe('settings', function(){
     it('should take specified environment', function(){
       expect(env('development').env).to.eq('development');
     });
+
+    it('should merge arrays', function(){
+      expect(env('production').array_of_objects[0].name).to.eq('baa');
+    });
   });
 });

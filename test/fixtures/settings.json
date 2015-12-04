@@ -20,6 +20,12 @@
     "only_exists_in_production": true,
     "nested": {
       "foo": "foobaa"
-    }
+    },
+    "array_of_objects": [
+      {
+        "id": "obj-1",
+        "name": "foo"
+      }
+    ]
   }
 }

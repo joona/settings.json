@@ -5,6 +5,12 @@
   },
 
   "production": {
-    "foo": "baafoo"
+    "foo": "baafoo",
+    "array_of_objects": [
+      {
+        "id": "obj-1",
+        "name": "baa"
+      }
+    ]
   }
 }
